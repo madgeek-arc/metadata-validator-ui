@@ -3,10 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TopmenuComponent } from './shared/topmenu/topmenu.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { SingleRecordValidatorComponent } from './pages/single-record-validator/single-record-validator.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TopmenuComponent,
+    SidebarComponent,
+    SingleRecordValidatorComponent
   ],
   imports: [
     BrowserModule,
