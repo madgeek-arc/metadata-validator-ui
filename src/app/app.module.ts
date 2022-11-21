@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { TopmenuComponent } from './shared/topmenu/topmenu.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { SingleRecordValidatorComponent } from './pages/single-record-validator/single-record-validator.component';
+import {FormsModule} from "@angular/forms";
+import {ClassificationService} from "./services/classification.service";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -14,11 +17,13 @@ import { SingleRecordValidatorComponent } from './pages/single-record-validator/
     SidebarComponent,
     SingleRecordValidatorComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule
+    ],
+  providers: [ClassificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

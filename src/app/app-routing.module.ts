@@ -6,10 +6,10 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'single-record-validate'
+    redirectTo: 'sdg-classifier'
   },
   {
-    path: 'single-record-validate',
+    path: 'sdg-classifier',
     component: SingleRecordValidatorComponent
   },
 ];

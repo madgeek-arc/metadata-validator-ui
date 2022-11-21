@@ -1,33 +1,30 @@
-
-
-
 <div id="page_content">
   <div id="page_content_header" class="uk-blur-background" offset="65">
     <div class="uk-container uk-container-large">
 
       <div class="uk-section">
 
-        <h6>1. Select guidelines (*)</h6>
-        <div class="uk-width-1-2@m uk-grid-margin uk-first-column">
-          <div input="" type="select">
-            <div id="input-12">
-              <div class="input-wrapper inner active" tabindex="0" aria-haspopup="true" aria-expanded="false">
-                <div click-outside-or-esc="" class="input-box select">
-                  <div class="placeholder"><label>guidelines <sup>*</sup><!----></label></div><!---->
-                  <div class="uk-flex uk-flex-middle" aria-expanded="false" tabindex="0"
-                       uk-tooltip="title: Public; delay: 500; pos: bottom-left" title=""><!----><!----><!----><!---->
-                    <div class="input uk-width-expand uk-text-truncate">Public</div><!----><!----><!----><!----><!---->
-                    <!----><!---->
-                    <div class="uk-margin-small-left icon"><!----><!---->
-                      <div><!----><span class="uk-flex"><span class="material-icons" style="font-size: 20px;">arrow_drop_down</span></span>
-                        <!----><!----></div><!----><!----><!----><!----></div><!----></div>
-                  <div class="tools"></div>
-                </div>
-              </div><!----></div><!----><!----><span class="uk-text-danger uk-text-small"></span><span
-            class="uk-text-warning uk-text-small"><!----></span><!----><span class="uk-text-small"></span></div>
-        </div>
+<!--        <h6>1. Select guidelines (*)</h6>-->
+<!--        <div class="uk-width-1-2@m uk-grid-margin uk-first-column">-->
+<!--          <div input="" type="select">-->
+<!--            <div id="input-12">-->
+<!--              <div class="input-wrapper inner active" tabindex="0" aria-haspopup="true" aria-expanded="false">-->
+<!--                <div click-outside-or-esc="" class="input-box select">-->
+<!--                  <div class="placeholder"><label>guidelines <sup>*</sup>&lt;!&ndash;&ndash;&gt;</label></div>&lt;!&ndash;&ndash;&gt;-->
+<!--                  <div class="uk-flex uk-flex-middle" aria-expanded="false" tabindex="0"-->
+<!--                       uk-tooltip="title: Public; delay: 500; pos: bottom-left" title="">&lt;!&ndash;&ndash;&gt;&lt;!&ndash;&ndash;&gt;&lt;!&ndash;&ndash;&gt;&lt;!&ndash;&ndash;&gt;-->
+<!--                    <div class="input uk-width-expand uk-text-truncate">Public</div>&lt;!&ndash;&ndash;&gt;&lt;!&ndash;&ndash;&gt;&lt;!&ndash;&ndash;&gt;&lt;!&ndash;&ndash;&gt;&lt;!&ndash;&ndash;&gt;-->
+<!--                    &lt;!&ndash;&ndash;&gt;&lt;!&ndash;&ndash;&gt;-->
+<!--                    <div class="uk-margin-small-left icon">&lt;!&ndash;&ndash;&gt;&lt;!&ndash;&ndash;&gt;-->
+<!--                      <div>&lt;!&ndash;&ndash;&gt;<span class="uk-flex"><span class="material-icons" style="font-size: 20px;">arrow_drop_down</span></span>-->
+<!--                        &lt;!&ndash;&ndash;&gt;&lt;!&ndash;&ndash;&gt;</div>&lt;!&ndash;&ndash;&gt;&lt;!&ndash;&ndash;&gt;&lt;!&ndash;&ndash;&gt;&lt;!&ndash;&ndash;&gt;</div>&lt;!&ndash;&ndash;&gt;</div>-->
+<!--                  <div class="tools"></div>-->
+<!--                </div>-->
+<!--              </div>&lt;!&ndash;&ndash;&gt;</div>&lt;!&ndash;&ndash;&gt;&lt;!&ndash;&ndash;&gt;<span class="uk-text-danger uk-text-small"></span><span-->
+<!--            class="uk-text-warning uk-text-small">&lt;!&ndash;&ndash;&gt;</span>&lt;!&ndash;&ndash;&gt;<span class="uk-text-small"></span></div>-->
+<!--        </div>-->
 
-        <h6>2. Paste metadata record (*)</h6>
+        <h6>Paste text</h6>
         <div class="uk-width-1-1 uk-grid-margin uk-first-column">
           <div input="" placeholder="Description">
             <div id="input-11">
@@ -35,7 +32,7 @@
                 <div click-outside-or-esc="" class="input-box">
 <!--                  <div class="placeholder"><label>Metadata record &lt;!&ndash;&ndash;&gt;</label></div>&lt;!&ndash;&ndash;&gt;-->
                   <div class="uk-flex"><!----><textarea class="input ng-untouched ng-pristine ng-valid"
-                                                        rows="15"></textarea><!----><!----><!----><!----><!----><!---->
+                                                        rows="10" [(ngModel)]="text" [ngModelOptions]="{standalone: true}"></textarea><!----><!----><!----><!----><!----><!---->
                   </div>
                   <div class="tools"></div>
                 </div>
@@ -44,12 +41,17 @@
         </div>
 
         <div class="uk-margin-medium-top">
-          <button class="uk-button uk-button-primary uk-flex uk-flex-middle uk-flex-wrap">
-            <div name="cloud_upload">
-              <span class="uk-flex"><span class="material-icons" style="font-size: 20px;">check</span></span>
-            </div>
-            <span class="uk-margin-small-left">Validate!</span>
+          <button class="uk-button uk-button-primary uk-flex uk-flex-middle uk-flex-wrap" (click)="classify()">
+<!--            <div name="cloud_upload">-->
+<!--              <span class="uk-flex"><span class="material-icons" style="font-size: 20px;">check</span></span>-->
+<!--            </div>-->
+            <span class="uk-margin-small-left">Submit!</span>
           </button>
+        </div>
+
+        <div *ngIf="response" class="uk-margin-medium-top">
+          <h6>Response</h6>
+          <pre class="uk-margin-top">{{response}}</pre>
         </div>
 
 
@@ -58,87 +60,3 @@
     </div>
   </div>
 </div>
-
-<!--<form *ngIf="stakeholderFb" [formGroup]="stakeholderFb">-->
-<!--  <div class="uk-grid uk-grid-large" uk-grid>-->
-<!--    <div class="uk-width-1-2@m">-->
-<!--      <div input id="name" [formInput]="stakeholderFb.get('name')"-->
-<!--           placeholder="Name"></div>-->
-<!--    </div>-->
-<!--    <div class="uk-width-1-2@m">-->
-<!--      <div input [formInput]="stakeholderFb.get('alias')"-->
-<!--           placeholder="URL Alias"></div>-->
-<!--    </div>-->
-<!--    <div class="uk-width-1-3@m">-->
-<!--      <div input [formInput]="stakeholderFb.get('index_id')"-->
-<!--           placeholder="Index ID"></div>-->
-<!--    </div>-->
-<!--    <div class="uk-width-1-3@m">-->
-<!--      <div input [formInput]="stakeholderFb.get('index_name')"-->
-<!--           placeholder="Index Name"></div>-->
-<!--    </div>-->
-<!--    <div class="uk-width-1-3@m">-->
-<!--      <div input [formInput]="stakeholderFb.get('index_shortName')"-->
-<!--           placeholder="Index Short Name"></div>-->
-<!--    </div>-->
-<!--    <div class="uk-width-1-1">-->
-<!--      <div input [type]="'textarea'" placeholder="Description"-->
-<!--           [rows]="4" [formInput]="stakeholderFb.get('description')"></div>-->
-<!--    </div>-->
-<!--    <div class="uk-width-1-1">-->
-<!--      <input #file id="photo" type="file" class="uk-hidden" (change)="fileChangeEvent($event)"/>-->
-<!--      <div *ngIf="!stakeholderFb.get('isUpload').value" class="uk-grid uk-grid-column-large" uk-grid>-->
-<!--        <div class="uk-margin-top uk-width-auto@l uk-width-1-1">-->
-<!--          <div class="uk-grid uk-grid-column-large uk-flex-middle" uk-grid>-->
-<!--            <div class="uk-width-auto@l uk-width-1-1 uk-flex uk-flex-center">-->
-<!--              <button class="uk-button uk-button-primary uk-flex uk-flex-middle uk-flex-wrap"-->
-<!--                      (click)="file.click()">-->
-<!--                <icon name="cloud_upload" [flex]="true"></icon>-->
-<!--                <span class="uk-margin-small-left">Upload a file</span>-->
-<!--              </button>-->
-<!--            </div>-->
-<!--            <div class="uk-text-center uk-text-bold uk-width-expand">-->
-<!--              OR-->
-<!--            </div>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div input class="uk-width-expand" type="logoURL" [placeholder]="'Link to the logo'" [formInput]="stakeholderFb.get('logoUrl')"></div>-->
-<!--      </div>-->
-<!--      <div *ngIf="stakeholderFb.get('isUpload').value" class="uk-width-1-1 uk-flex uk-flex-middle">-->
-<!--        <div class="uk-card uk-card-default uk-text-center uk-border-circle">-->
-<!--          <img class="uk-position-center uk-blend-multiply" [src]="photo">-->
-<!--        </div>-->
-<!--        <div class="uk-margin-left">-->
-<!--          <button (click)="remove()" class="uk-button-danger uk-icon-button uk-icon-button-small">-->
-<!--            <icon [flex]="true" ratio="0.8" name="delete"></icon>-->
-<!--          </button>-->
-<!--        </div>-->
-<!--        <div class="uk-margin-small-left">-->
-<!--          <button class="uk-button-secondary uk-icon-button uk-icon-button-small" (click)="file.click()">-->
-<!--            <icon [flex]="true" ratio="0.8" name="edit"></icon>-->
-<!--          </button>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      &lt;!&ndash; Full width error message &ndash;&gt;-->
-<!--      <div *ngIf="uploadError" class="uk-text-danger uk-margin-small-top uk-width-1-1">{{uploadError}}</div>-->
-<!--    </div>-->
-<!--    <div [class]="canChooseType ? 'uk-width-1-3@m' : 'uk-width-1-2@m'">-->
-<!--      <div input [formInput]="stakeholderFb.get('visibility')"-->
-<!--           [placeholder]="'Select a status'"-->
-<!--           [options]="stakeholderUtils.statuses" type="select"></div>-->
-<!--    </div>-->
-<!--    <div [class]="canChooseType ? 'uk-width-1-3@m' : 'uk-width-1-2@m'">-->
-<!--      <div input [formInput]="stakeholderFb.get('type')"-->
-<!--           [placeholder]="'Select a type'"-->
-<!--           [options]="types" type="select"></div>-->
-<!--    </div>-->
-<!--    <ng-container *ngIf="canChooseType">-->
-<!--      <div class="uk-width-1-3@m">-->
-<!--        <div [placeholder]="'Select a template'"-->
-<!--             input [formInput]="stakeholderFb.get('defaultId')"-->
-<!--             [options]="defaultStakeholdersOptions" type="select"></div>-->
-<!--      </div>-->
-<!--    </ng-container>-->
-<!--  </div>-->
-<!--</form>-->
-<!--<div #notify [class.uk-hidden]="!stakeholderFb" notify-form class="uk-width-1-1 uk-margin-large-top uk-margin-medium-bottom"></div>-->
